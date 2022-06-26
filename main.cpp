@@ -16,24 +16,24 @@ char board[10] = {
 };
 
 void displayBoard() {
+    // ! External board borders
+    // for (int i = 1; i <= 9; i++) {
+    //     cout << '|' << board[i] << '|';
+    //     if (i % 3 == 0)
+    //         cout << endl;
+    // }
+
     cout << board[1] << '|' << board[2] << "|" << board[3] << '\n';
     cout << board[4] << '|' << board[5] << "|" << board[6] << '\n';
     cout << board[7] << '|' << board[8] << "|" << board[9] << '\n';
 }
 
 void clearBoard() {
-    board[1] = '#',
-    board[2] = '#',
-    board[3] = '#',
-    board[4] = '#',
-    board[5] = '#',
-    board[6] = '#',
-    board[7] = '#',
-    board[8] = '#',
-    board[9] = '#';
+    for (int i = 1; i < 10; i++)
+        board[i] = '#';
 }
 // ! comment all the * highlighted comments after the code if you wish player 1 to start everytime
-int p1_starter = 1, p2_starter = 0; // * initialize variables to switch the starter mark
+int p1_starter = 1; // * initialize variables to switch the starter mark
 
 void askX();
 void askO();
@@ -52,7 +52,7 @@ void askX() {
                 askO();
             else {
                 cout << "Player 1 wins!\n";
-                p1_starter = 0, p2_starter = 1; // * player 1 starts after player 1 wins
+                p1_starter = 0; // * player 1 starts after player 1 wins
                 askNew();
             }
         } else {
@@ -74,7 +74,7 @@ void askO() {
                 askX();
             else {
                 cout << "Player 2 wins!\n";
-                p1_starter = 1, p2_starter = 0; // * player 1 starts after player 2 wins
+                p1_starter = 1; // * player 1 starts after player 2 wins
                 askNew();
             }
         } else {
